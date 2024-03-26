@@ -8,7 +8,7 @@ import useNotificationsContext from "context/Notifications/useNotificationContex
 // constants
 import { BOOKS } from "constants/routes"
 
-export const useDeleteBook = () => {
+export const useDeleteBook = (bookTitle: string) => {
   const navigate = useNavigate()
   const { mutate } = useSWRConfig()
   const { handlePushNotification } = useNotificationsContext()
@@ -25,7 +25,7 @@ export const useDeleteBook = () => {
       mutate(BOOKS_KEYS.GET_BOOKS)
 
       handlePushNotification({
-        message: `The book has been successfully deleted`,
+        message: `The book '${bookTitle}' has been successfully deleted`,
         options: { variant: "info" },
       })
 

@@ -15,7 +15,7 @@
 
 ```bash
 git clone repo
-cd ./books-manager-mock-server/
+cd books-manager/books-manager-mock-server/
 yarn install # install node dependencies locally
 yarn start # start the mocked server for frontend application
 cd ../books-manager-app/

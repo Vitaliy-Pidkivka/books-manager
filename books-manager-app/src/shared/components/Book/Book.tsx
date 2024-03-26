@@ -6,7 +6,7 @@ import DeleteIcon from "@mui/icons-material/Delete"
 // hooks
 import { useDeleteBook } from "./hooks/useDeleteBook"
 // constants
-import { BOOKS, generateUpdateBookPath, generateViewBookPath } from "constants/routes"
+import { generateUpdateBookPath, generateViewBookPath } from "constants/routes"
 // types
 import { Book as BookType } from "types/books"
 
@@ -15,7 +15,7 @@ type BookProps = BookType & {
 }
 
 const Book: React.FC<BookProps> = ({ author, description, genre, title, id, disableLink }: BookProps) => {
-  const { handleDeleteBook, isDeletingBook } = useDeleteBook()
+  const { handleDeleteBook, isDeletingBook } = useDeleteBook(title)
   const navigate = useNavigate()
 
   return (
