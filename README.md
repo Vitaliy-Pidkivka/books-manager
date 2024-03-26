@@ -6,6 +6,7 @@
 
 - node >= 19.0.1
 - yarn >= 1.22.19
+- git  >= 2.41.0
 
 ### Install application
 
@@ -14,11 +15,16 @@
 #### Open terminal in the folder you will clone repo and type next commands:
 
 ```bash
-git clone repo
+git clone https://github.com/Vitaliy-Pidkivka/books-manager.git
 cd books-manager/books-manager-mock-server/
 yarn install # install node dependencies locally
 yarn start # start the mocked server for frontend application
-cd ../books-manager-app/
+```
+
+#### Open one more terminal in 'books-manager' folder and type next commands
+
+```bash
+cd books-manager-app/
 yarn install # install node dependencies locally
 yarn start #Runs the app in the development mode.
 yarn husky-install # install husky & create folder(automatically) - optional
