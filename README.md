@@ -15,10 +15,10 @@
 
 ```bash
 git clone repo
-cd ./books-manager-mock-server
+cd ./books-manager-mock-server/
 yarn install # install node dependencies locally
 yarn start # start the mocked server for frontend application
-cd ../books-manager-app
+cd ../books-manager-app/
 yarn install # install node dependencies locally
 yarn start #Runs the app in the development mode.
 yarn husky-install # install husky & create folder(automatically) - optional

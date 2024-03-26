@@ -22,7 +22,6 @@ type BookFormProps = {
 
 // BookForm component
 const BookForm = ({ handleSubmit, disableSubmit, initialBookValues = defaultBookValues }: BookFormProps) => {
-  console.log({ initialBookValues })
   const formik = useFormik({
     initialValues: initialBookValues,
     validationSchema,

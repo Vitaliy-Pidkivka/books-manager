@@ -1,15 +1,22 @@
 import { useSWRConfig } from "swr"
 import useSWRMutation from "swr/mutation"
+import { useNavigate } from "react-router-dom"
+import { useEffect, useRef } from "react"
 // api
 import { BOOKS_KEYS, addBook } from "api/books"
 // context
 import useNotificationsContext from "context/Notifications/useNotificationContext"
+// constants
+import { BOOKS } from "constants/routes"
 // types
 import { Book } from "types/books"
 
 export const useAddBook = () => {
+  const navigate = useNavigate()
   const { mutate } = useSWRConfig()
   const { handlePushNotification } = useNotificationsContext()
+
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>()
 
   const fetcher = async (_: string, options: { arg: Book }) => {
     const book = await addBook(options.arg)
@@ -26,6 +33,8 @@ export const useAddBook = () => {
         message: `${data.title} book has been successfully created`,
         options: { variant: "success" },
       })
+
+      timeoutRef.current = setTimeout(() => navigate(BOOKS), 1500)
     },
   })
 
@@ -33,6 +42,14 @@ export const useAddBook = () => {
     // @ts-ignore
     trigger(values)
   }
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
+    }
+  }, [timeoutRef])
 
   return {
     isCreatingBook: isMutating,
